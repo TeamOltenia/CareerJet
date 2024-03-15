@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment: 
+      MYSQL_DATABASE: 'careerjetdb' # Corrected spelling of 'careerjetdb'
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports: 
+      - '3306:3306'
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile # Corrected the Dockerfile name to 'Dockerfile' (assuming it's capitalized)
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_USER: ${MYSQL_USER}
+      - DATABASE_PASSWORD: ${MYSQL_PASSWORD}
+      - DATABASE_NAME: 'careerjetdb' # Corrected spelling of 'careerjetdb'
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile # Corrected the Dockerfile name to 'Dockerfile' (assuming it's capitalized)
+    ports:
+      - '3001:3000' # Port should be 3000:3000 if frontend is running on port 3000
