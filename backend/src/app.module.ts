@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { CompaniesModule } from './companies/companies.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -14,7 +15,7 @@ import { UsersModule } from './users/users.module';
     database: 'careerjetdb',
     entities: [],
     synchronize: true
-  }), UsersModule],
+  }), UsersModule, CompaniesModule],
   controllers: [AppController],
   providers: [AppService],
 })
