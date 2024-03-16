@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { JobsModule } from './jobs/jobs.module';
 import { CompaniesModule } from './companies/companies.module';
 
 @Module({
@@ -15,6 +16,7 @@ import { CompaniesModule } from './companies/companies.module';
     database: 'careerjetdb',
     entities: [],
     synchronize: true
+  }), UsersModule, JobsModule],
   }), UsersModule, CompaniesModule],
   controllers: [AppController],
   providers: [AppService],
